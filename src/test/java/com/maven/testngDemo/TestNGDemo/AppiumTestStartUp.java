@@ -33,7 +33,7 @@ public class AppiumTestStartUp {
 	public static void testSetUp() {
 		System.out.println("Starting Appium server" + df.format(new Date()));
 		startAppiumServer();
-		//Commented4
+		//Commented5
 	}
 
 	@AfterTest
