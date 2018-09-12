@@ -56,14 +56,31 @@ public class AppiumTestStartUp {
 		 */
 		caps.setCapability("browserName", "Chrome");
 		caps.setCapability("noReset", "true");
+		caps.setCapability("autoGrantPermissions", "true");
 
 		//while (appiumService.isRunning()) {
 			try {
 				driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-				driver.get("https://www.google.com");
+				driver.get("https://qa.marykayintouch.ca/Login/Login.aspx");
 				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-				driver.findElementByName("q").sendKeys("Sanju moview review");
-				//driver.findElement(By.xpath("//input[@id='lst-ib']")).sendKeys("Sanju movie review");
+				driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+				driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+				
+				driver.findElement(By.id("txtConsultantID")).sendKeys("BU6865");
+				driver.findElement(By.id("txtPassword")).sendKeys("MKqa2015");
+				/*driver.findElementByName("q").sendKeys("Sanju moview review");
+				driver.findElement(By.xpath("//input[@id='lst-ib']")).sendKeys("Sanju movie review");*/
+				
+				String title = driver.getTitle();
+				if(title.equalsIgnoreCase("InTouch Home"))
+				{
+					System.out.println("Verified");
+				}
+				else
+				{
+					System.out.println("Mismatch");
+				}
+				
 				((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.ENTER);
 				Thread.sleep(9000);
 				driver.close();
