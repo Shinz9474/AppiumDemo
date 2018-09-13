@@ -2,20 +2,20 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-07-21T13:42:40Z" name="Default suite" finished-at="2018-07-21T13:46:04Z" duration-ms="203903">
+  <suite started-at="2018-09-13T06:33:19Z" name="Default suite" finished-at="2018-09-13T06:35:02Z" duration-ms="103121">
     <groups>
     </groups>
-    <test started-at="2018-07-21T13:42:40Z" name="Default test" finished-at="2018-07-21T13:46:04Z" duration-ms="203903">
+    <test started-at="2018-09-13T06:33:19Z" name="Default test" finished-at="2018-09-13T06:35:02Z" duration-ms="103121">
       <class name="com.maven.testngDemo.TestNGDemo.AppiumTestStartUp">
-        <test-method is-config="true" signature="testSetUp()[pri:0, instance:com.maven.testngDemo.TestNGDemo.AppiumTestStartUp@67080771]" started-at="2018-07-21T19:12:40Z" name="testSetUp" finished-at="2018-07-21T19:13:19Z" duration-ms="39332" status="PASS">
+        <test-method is-config="true" signature="testSetUp()[pri:0, instance:com.maven.testngDemo.TestNGDemo.AppiumTestStartUp@6404f418]" started-at="2018-09-13T12:03:19Z" name="testSetUp" finished-at="2018-09-13T12:03:24Z" duration-ms="5489" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSetUp -->
-        <test-method signature="testCase()[pri:0, instance:com.maven.testngDemo.TestNGDemo.AppiumTestStartUp@67080771]" started-at="2018-07-21T19:13:19Z" name="testCase" finished-at="2018-07-21T19:16:04Z" duration-ms="164403" status="PASS">
+        <test-method signature="testCase()[pri:0, instance:com.maven.testngDemo.TestNGDemo.AppiumTestStartUp@6404f418]" started-at="2018-09-13T12:03:24Z" name="testCase" finished-at="2018-09-13T12:04:57Z" duration-ms="92789" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCase -->
-        <test-method is-config="true" signature="testCleanUp()[pri:0, instance:com.maven.testngDemo.TestNGDemo.AppiumTestStartUp@67080771]" started-at="2018-07-21T19:16:04Z" name="testCleanUp" finished-at="2018-07-21T19:16:04Z" duration-ms="52" status="PASS">
+        <test-method is-config="true" signature="testCleanUp()[pri:0, instance:com.maven.testngDemo.TestNGDemo.AppiumTestStartUp@6404f418]" started-at="2018-09-13T12:05:02Z" name="testCleanUp" finished-at="2018-09-13T12:05:02Z" duration-ms="53" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCleanUp -->
