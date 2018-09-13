@@ -7,12 +7,16 @@ import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import com.appium.commonactions.CommonActions;
+import com.appium.variables.CommonVariables;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -42,10 +46,10 @@ public class AppiumTestStartUp {
 		stopAppiumServer();
 	}
 
-	//@Test()
+	
 	@Test(priority = 1)
 	public static void testCase() {
-		AppiumDriver<MobileElement> driver = null;
+		// AppiumDriver<MobileElement> driver = null;
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("deviceName", "OnePlus 3T");
 		caps.setCapability("udid", "de7af825"); // Give Device ID of your mobile phone
@@ -58,44 +62,45 @@ public class AppiumTestStartUp {
 		caps.setCapability("browserName", "Chrome");
 		caps.setCapability("noReset", "true");
 		caps.setCapability("autoGrantPermissions", "true");
+		caps.setCapability("autoAcceptAlerts", "true");
 
-		//while (appiumService.isRunning()) {
+		if (appiumService.isRunning()) {
 			try {
-				driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-				driver.get("https://qa.marykayintouch.ca/Login/Login.aspx");
-				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-				driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-				driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+				CommonVariables.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
+						caps);
+				CommonVariables.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				CommonVariables.driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+				CommonVariables.driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+				CommonVariables.driver.get("https://qa.marykayintouch.ca/Login/Login.aspx");
+
+				CommonVariables.driver.findElement(By.id("txtConsultantID")).sendKeys("BU6865");
+				CommonVariables.driver.findElement(By.id("txtPassword")).sendKeys("MKqa2015");
+
+				((AndroidDriver<?>) CommonVariables.driver).pressKeyCode(AndroidKeyCode.ENTER);
+				Thread.sleep(5000);
+				CommonVariables.setContext= com.appium.variables.CommonVariables.ContextSet.NativeView;
+
+				CommonActions.switchContext();
 				
-				driver.findElement(By.id("txtConsultantID")).sendKeys("BU6865");
-				driver.findElement(By.id("txtPassword")).sendKeys("MKqa2015");
-				/*driver.findElementByName("q").sendKeys("Sanju moview review");
-				driver.findElement(By.xpath("//input[@id='lst-ib']")).sendKeys("Sanju movie review");*/
-				
-				String title = driver.getTitle();
-				if(title.equalsIgnoreCase("InTouch Home"))
-				{
+				/*String title = CommonVariables.driver.getTitle();
+				if (title.equalsIgnoreCase("InTouch Home")) {
 					System.out.println("Verified");
-				}
-				else
-				{
+				} else {
 					System.out.println("Mismatch");
 				}
-				
-				((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.ENTER);
-				Thread.sleep(9000);
-				driver.close();
-				//break;
+*/
+				CommonVariables.driver.close();
+				CommonVariables.driver.quit();
+				// break;
 			}
 
 			catch (Exception ex) {
 				System.out.println("Unable to launch app.\nFollowing exception occured while launching the app: "
 						+ ex.getMessage());
-
 			}
 		}
 
-	//}
+	}
 
 	public static void startAppiumServer() {
 		try {
