@@ -10,6 +10,7 @@ import io.appium.java_client.MobileElement;
 
 public class CommonActions {
 
+	//Switch Contexts
 	public static void switchContext() {
 		try {
 			Set<String> contexts = ((AppiumDriver<MobileElement>) CommonVariables.driver).getContextHandles();
